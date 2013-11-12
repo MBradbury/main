@@ -64,9 +64,7 @@ namespace IronPython.Runtime.Operations {
         }
 
         public static object __repr__(Assembly self) {
-            Assembly asmSelf = self as Assembly;
-
-            return "<Assembly " + asmSelf.FullName + ">";
+            return "<Assembly " + self.FullName + ">";
         }
 
         private static TopNamespaceTracker GetReflectedAssembly(CodeContext/*!*/ context, Assembly assem) {
