@@ -68,7 +68,7 @@ namespace Microsoft.Scripting.Utils {
         }
 
         public bool ContainsKey(TKey key) {
-            // We dont have to worry about creating "new WeakObject(key)" since the comparer
+            // We don't have to worry about creating "new WeakObject(key)" since the comparer
             // can compare raw objects with WeakObject.
             return dict.ContainsKey(key);
         }
@@ -313,8 +313,7 @@ namespace Microsoft.Scripting.Utils {
     }
 
     public sealed class HybridMapping<T> {
-        private Dictionary<int, object> _dict = new Dictionary<int, object>();
-        private readonly Object _synchObject = new Object();
+        private readonly Dictionary<int, object> _dict = new Dictionary<int, object>();
         private readonly int _offset;
         private int _current;
 
@@ -340,7 +339,7 @@ namespace Microsoft.Scripting.Utils {
         }
 
         public int WeakAdd(T value) {
-            lock (_synchObject) {
+            lock (_dict) {
                 int saved = _current;
                 while (_dict.ContainsKey(_current)) {
                     NextKey();
@@ -353,7 +352,7 @@ namespace Microsoft.Scripting.Utils {
         }
 
         public int StrongAdd(T value) {
-            lock (_synchObject) {
+            lock (_dict) {
                 int saved = _current;
                 while (_dict.ContainsKey(_current)) {
                     NextKey();
@@ -382,7 +381,7 @@ namespace Microsoft.Scripting.Utils {
         }
 
         public int GetIdFromObject(T value) {
-            lock (_synchObject) {
+            lock (_dict) {
                 foreach (KeyValuePair<int, object> kv in _dict) {
                     if (kv.Value is WeakObject) {
                         object target = ((WeakObject)kv.Value).Target;
@@ -400,7 +399,7 @@ namespace Microsoft.Scripting.Utils {
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate")] // TODO: fix (rename?)
         public void RemoveOnId(int id) {
-            lock (_synchObject) {
+            lock (_dict) {
                 _dict.Remove(id);
             }
         }
