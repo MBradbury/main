@@ -66,7 +66,7 @@ namespace IronPython.Compiler {
         private PythonAst _globalParent;
 
         private static readonly char[] newLineChar = new char[] { '\n' };
-        private static readonly char[] whiteSpace = { ' ', '\t' };
+        private static readonly char[] whiteSpace = new char[] { ' ', '\t' };
       
         #region Construction
 
@@ -1523,16 +1523,14 @@ namespace IronPython.Compiler {
             if (items != null) {
                 for (int i = items.Count - 1; i >= 0; i--) {
                     var curItem = items[i];
-                    var innerWith = new WithStatement(curItem.ContextManager, curItem.Variable, body);
-                    innerWith.HeaderIndex = header;                    
+                    var innerWith = new WithStatement(curItem.ContextManager, curItem.Variable, body, header);                  
                     innerWith.SetLoc(_globalParent, withItem.Start, GetEnd());
                     body = innerWith;
                     header = GetEnd();
                 }
             }
 
-            WithStatement ret = new WithStatement(withItem.ContextManager, withItem.Variable, body);
-            ret.HeaderIndex = header;
+            WithStatement ret = new WithStatement(withItem.ContextManager, withItem.Variable, body, header);
             ret.SetLoc(_globalParent, withItem.Start, GetEnd());
             return ret;
         }
@@ -3266,7 +3264,7 @@ namespace IronPython.Compiler {
         /// eaten.
         /// 
         /// Python always tokenizes to have only 1  new line character in a 
-        /// row.  But we also craete NLToken's and ignore them except for 
+        /// row.  But we also create NLToken's and ignore them except for 
         /// error reporting purposes.  This gives us the same errors as 
         /// CPython and also matches the behavior of the standard library 
         /// tokenize module.  This function eats any present NL tokens and throws
@@ -3284,7 +3282,7 @@ namespace IronPython.Compiler {
         /// Eats a new line token throwing if the next token isn't a new line.  
         /// 
         /// Python always tokenizes to have only 1  new line character in a 
-        /// row.  But we also craete NLToken's and ignore them except for 
+        /// row.  But we also create NLToken's and ignore them except for 
         /// error reporting purposes.  This gives us the same errors as 
         /// CPython and also matches the behavior of the standard library 
         /// tokenize module.  This function eats any present NL tokens and throws

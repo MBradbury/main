@@ -35,19 +35,16 @@ namespace IronPython.Compiler.Ast {
     using Ast = MSAst.Expression;
 
     public class WithStatement : Statement {
-        private int _headerIndex;
+        private readonly int _headerIndex;
         private readonly Expression _contextManager;
         private readonly Expression _var;
-        private Statement _body;
+        private readonly Statement _body;
 
-        public WithStatement(Expression contextManager, Expression var, Statement body) {
+        public WithStatement(Expression contextManager, Expression var, Statement body, int headerIndex = 0) {
             _contextManager = contextManager;
             _var = var;
             _body = body;
-        }
-
-        public int HeaderIndex {
-            set { _headerIndex = value; }
+            _headerIndex = headerIndex;
         }
 
         public new Expression Variable {
