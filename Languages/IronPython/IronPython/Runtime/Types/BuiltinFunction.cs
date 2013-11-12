@@ -246,7 +246,7 @@ namespace IronPython.Runtime.Types {
 
         /// <summary>
         /// Returns a descriptor for the built-in function if one is
-        /// neededed
+        /// needed
         /// </summary>
         internal PythonTypeSlot/*!*/ GetDescriptor() {
             if ((FunctionType & FunctionType.Method) != 0) {
@@ -521,7 +521,7 @@ namespace IronPython.Runtime.Types {
                 int index = sig.IndexOf(ArgumentType.List);
                 DynamicMetaObject str = args[index];
 
-                 // TODO: ANything w/ __iter__ that's not an IList<object>
+                 // TODO: Anything w/ __iter__ that's not an IList<object>
                 if (!(str.Value is IList<object>) && str.Value is IEnumerable) {
                     // The DefaultBinder only handles types that implement IList<object>.  Here we have a
                     // string.  We'll convert it into a tuple

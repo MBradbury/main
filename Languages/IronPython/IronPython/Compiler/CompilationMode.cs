@@ -50,7 +50,7 @@ namespace IronPython.Compiler {
         
         /// <summary>
         /// Compilation will use a type and declare static fields for globals.  The resulting type
-        /// is uncollectible and therefore extended use of this will cause memory leaks.
+        /// is uncollectable and therefore extended use of this will cause memory leaks.
         /// </summary>
         public static readonly CompilationMode Uncollectable = new UncollectableCompilationMode();
 #endif

@@ -39,7 +39,7 @@ namespace IronPython.Runtime {
     /// 
     /// Reads against the dictionary happen lock free.  When the dictionary is mutated
     /// it is either adding or removing buckets in a thread-safe manner so that the readers
-    /// will either see a consistent picture as if the read occured before or after the mutation.
+    /// will either see a consistent picture as if the read occurred before or after the mutation.
     /// 
     /// When resizing the dictionary the buckets are replaced atomically so that the reader
     /// sees the new buckets or the old buckets.  When reading the reader first reads
@@ -86,8 +86,8 @@ namespace IronPython.Runtime {
         }
 
         /// <summary>
-        /// Creates a new dictionary geting values/keys from the
-        /// items arary
+        /// Creates a new dictionary getting values/keys from the
+        /// items array
         /// </summary>
         public CommonDictionaryStorage(object[] items, bool isHomogeneous)
             : this(Math.Max(items.Length / 2, InitialBucketSize)) {

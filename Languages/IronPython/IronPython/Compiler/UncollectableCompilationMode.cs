@@ -63,7 +63,7 @@ namespace IronPython.Compiler.Ast {
         #region Cached Constant/Symbol/Global Support
 
         public override MSAst.Expression/*!*/ GetConstant(object value) {
-            // if we can emit the value and we won't be continiously boxing/unboxing
+            // if we can emit the value and we won't be continuously boxing/unboxing
             // then don't bother caching the value in a static field.
             
             // TODO: Sometimes we don't want to pre-box the values, such as if it's an int

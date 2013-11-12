@@ -1138,7 +1138,7 @@ namespace IronPython.Runtime.Operations {
         /// </summary>
         public static object GetUserDescriptor(object o, object instance, object context) {
             if (o is IPythonObject) {
-                // slow, but only encountred for user defined descriptors.
+                // slow, but only encountered for user defined descriptors.
                 PerfTrack.NoteEvent(PerfTrack.Categories.DictInvoke, "__get__");
                 object ret;
                 if (PythonContext.TryInvokeTernaryOperator(DefaultContext.Default,
