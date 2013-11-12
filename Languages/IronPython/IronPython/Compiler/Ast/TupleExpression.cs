@@ -33,7 +33,7 @@ namespace IronPython.Compiler.Ast {
     using Ast = MSAst.Expression;
 
     public class TupleExpression : SequenceExpression {
-        private bool _expandable;
+        private readonly bool _expandable;
 
         public TupleExpression(bool expandable, params Expression[] items)
             : base(items) {
@@ -92,9 +92,7 @@ namespace IronPython.Compiler.Ast {
         }
 
         public bool IsExpandable {
-            get {
-                return _expandable;
-            }
+            get { return _expandable; }
         }
 
         internal override bool IsConstant {

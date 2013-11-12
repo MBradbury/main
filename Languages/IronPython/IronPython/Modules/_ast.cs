@@ -915,13 +915,13 @@ namespace IronPython.Modules
         [PythonType]
         public class Add : @operator
         {
-            internal static Add Instance = new Add();
+            internal static readonly Add Instance = new Add();
         }
 
         [PythonType]
         public class And : boolop
         {
-            internal static And Instance = new And();
+            internal static readonly And Instance = new And();
         }
 
         [PythonType]
@@ -2629,25 +2629,25 @@ namespace IronPython.Modules
         [PythonType]
         public class Load : expr_context
         {
-            internal static Load Instance = new Load();
+            internal static readonly Load Instance = new Load();
         }
 
         [PythonType]
         public class Lt : cmpop
         {
-            internal static Lt Instance = new Lt();
+            internal static readonly Lt Instance = new Lt();
         }
 
         [PythonType]
         public class LtE : cmpop
         {
-            internal static LtE Instance = new LtE();
+            internal static readonly LtE Instance = new LtE();
         }
 
         [PythonType]
         public class LShift : @operator
         {
-            internal static LShift Instance = new LShift();
+            internal static readonly LShift Instance = new LShift();
         }
 
         [PythonType]
@@ -2688,7 +2688,7 @@ namespace IronPython.Modules
         [PythonType]
         public class Mult : @operator
         {
-            internal static Mult Instance = new Mult();
+            internal static readonly Mult Instance = new Mult();
         }
 
         [PythonType]
@@ -2740,19 +2740,19 @@ namespace IronPython.Modules
         [PythonType]
         public class Not : unaryop
         {
-            internal static Not Instance = new Not();
+            internal static readonly Not Instance = new Not();
         }
 
         [PythonType]
         public class NotEq : cmpop
         {
-            internal static NotEq Instance = new NotEq();
+            internal static readonly NotEq Instance = new NotEq();
         }
 
         [PythonType]
         public class NotIn : cmpop
         {
-            internal static NotIn Instance = new NotIn();
+            internal static readonly NotIn Instance = new NotIn();
         }
 
         [PythonType]
@@ -2787,19 +2787,19 @@ namespace IronPython.Modules
         [PythonType]
         public class Or : boolop
         {
-            internal static Or Instance = new Or();
+            internal static readonly Or Instance = new Or();
         }
 
         [PythonType]
         public class Param : expr_context
         {
-            internal static Param Instance = new Param();
+            internal static readonly Param Instance = new Param();
         }
 
         [PythonType]
         public class Pass : stmt
         {
-            internal static Pass Instance = new Pass();
+            internal static readonly Pass Instance = new Pass();
 
             internal Pass()
                 : this(null, null) { }
@@ -2817,7 +2817,7 @@ namespace IronPython.Modules
         [PythonType]
         public class Pow : @operator
         {
-            internal static Pow Instance = new Pow();
+            internal static readonly Pow Instance = new Pow();
         }
 
         [PythonType]

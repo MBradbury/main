@@ -38,7 +38,7 @@ using MSAst = Microsoft.Scripting.Ast;
 
 namespace IronPython.Compiler.Ast {
     class GetParentContextFromFunctionExpression : MSAst.Expression, IInstructionProvider {
-        private static MSAst.Expression _parentContext = MSAst.Expression.Call(AstMethods.GetParentContextFromFunction, FunctionDefinition._functionParam);
+        private static readonly MSAst.Expression _parentContext = MSAst.Expression.Call(AstMethods.GetParentContextFromFunction, FunctionDefinition._functionParam);
 
         public override bool CanReduce {
             get {

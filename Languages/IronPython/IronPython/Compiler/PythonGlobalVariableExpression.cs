@@ -49,7 +49,7 @@ namespace IronPython.Compiler {
         private readonly PythonGlobal/*!*/ _global;
         private readonly Ast.PythonVariable/*!*/ _variable;
         private readonly bool _lightEh;
-        internal static Expression/*!*/ Uninitialized = Expression.Field(null, typeof(Uninitialized).GetField("Instance"));
+        internal static readonly Expression/*!*/ Uninitialized = Expression.Field(null, typeof(Uninitialized).GetField("Instance"));
 
         public PythonGlobalVariableExpression(Expression/*!*/ globalExpr, Ast.PythonVariable/*!*/ variable, PythonGlobal/*!*/ global)
             : this(globalExpr, variable, global, false) {

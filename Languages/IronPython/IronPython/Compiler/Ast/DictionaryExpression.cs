@@ -34,7 +34,7 @@ namespace IronPython.Compiler.Ast {
 
     public class DictionaryExpression : Expression, IInstructionProvider {
         private readonly SliceExpression[] _items;
-        private static MSAst.Expression EmptyDictExpression = Ast.Call(AstMethods.MakeEmptyDict);
+        private static readonly MSAst.Expression EmptyDictExpression = Ast.Call(AstMethods.MakeEmptyDict);
 
         public DictionaryExpression(params SliceExpression[] items) {
             _items = items;
@@ -137,8 +137,8 @@ namespace IronPython.Compiler.Ast {
 
         #endregion
 
-        class EmptyDictInstruction: Instruction {
-            public static EmptyDictInstruction Instance = new EmptyDictInstruction();
+        sealed class EmptyDictInstruction: Instruction {
+            public static readonly EmptyDictInstruction Instance = new EmptyDictInstruction();
 
             public override int Run(InterpretedFrame frame) {
                 frame.Push(PythonOps.MakeEmptyDict());

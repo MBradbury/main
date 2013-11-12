@@ -21,7 +21,7 @@ namespace IronPython.Runtime.Types {
 
     public class ExtensionPropertyInfo {
         private MethodInfo _getter, _setter, _deleter;
-        private Type _declaringType;
+        private readonly Type _declaringType;
 
         public ExtensionPropertyInfo(Type logicalDeclaringType, MethodInfo mi) {
             _declaringType = logicalDeclaringType;

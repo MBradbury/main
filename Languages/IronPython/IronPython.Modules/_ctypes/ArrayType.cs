@@ -42,7 +42,7 @@ namespace IronPython.Modules {
     /// Provides support for interop with native code from Python code.
     /// </summary>
     public static partial class CTypes {
-        private static WeakDictionary<PythonType, Dictionary<int, ArrayType>> _arrayTypes = new WeakDictionary<PythonType, Dictionary<int, ArrayType>>();
+        private static readonly WeakDictionary<PythonType, Dictionary<int, ArrayType>> _arrayTypes = new WeakDictionary<PythonType, Dictionary<int, ArrayType>>();
 
         /// <summary>
         /// The meta class for ctypes array instances.

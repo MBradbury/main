@@ -25,8 +25,8 @@ namespace Microsoft.Scripting.Generation {
     /// for the NewTypeMaker code and may be useful in other situations as well.
     /// </summary>
     public class ParameterInfoWrapper : ParameterInfo {
-        private Type _type;
-        private string _name;
+        private readonly Type _type;
+        private readonly string _name;
 
         public ParameterInfoWrapper(Type parameterType) {
             _type = parameterType;

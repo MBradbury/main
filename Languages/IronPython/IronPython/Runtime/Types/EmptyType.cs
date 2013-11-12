@@ -20,7 +20,7 @@ using Microsoft.Scripting.Runtime;
 namespace IronPython.Runtime.Types {
 
     [PythonType("ellipsis"), Documentation(null)]
-    public class Ellipsis : ICodeFormattable {
+    public sealed class Ellipsis : ICodeFormattable {
         private static Ellipsis _instance;
         
         private Ellipsis() { }
@@ -49,7 +49,7 @@ namespace IronPython.Runtime.Types {
     }
 
     [PythonType("NotImplementedType"), Documentation(null)]
-    public class NotImplementedType : ICodeFormattable {
+    public sealed class NotImplementedType : ICodeFormattable {
         private static NotImplementedType _instance;
         
         private NotImplementedType() { }
@@ -77,7 +77,7 @@ namespace IronPython.Runtime.Types {
         #endregion
     }
 
-    public class NoneTypeOps {
+    public sealed class NoneTypeOps {
         internal const int NoneHashCode = 0x1e1a2e40;
 
         public static int __hash__(DynamicNull self) {

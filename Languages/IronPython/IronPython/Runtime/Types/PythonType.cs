@@ -71,7 +71,7 @@ type(name, bases, dict) -> creates a new type instance with the given name, base
         internal Dictionary<string, TypeGetBase> _cachedTypeGets; // cached gets on types (system and user types)
         internal Dictionary<string, TypeGetBase> _cachedTypeTryGets; // cached gets on types (system and user types)
 
-        // commonly calculatable
+        // commonly calculable
         private List<PythonType> _resolutionOrder;          // the search order for methods in the type
         private PythonType/*!*/[]/*!*/ _bases;              // the base classes of the type
         private BuiltinFunction _ctor;                      // the built-in function which allocates an instance - a .NET ctor
@@ -101,24 +101,24 @@ type(name, bases, dict) -> creates a new type instance with the given name, base
         [MultiRuntimeAware]
         private static int MasterVersion = 1;
         private static readonly CommonDictionaryStorage _pythonTypes = new CommonDictionaryStorage();
-        internal static PythonType _pythonTypeType = DynamicHelpers.GetPythonTypeFromType(typeof(PythonType));
+        internal static readonly PythonType _pythonTypeType = DynamicHelpers.GetPythonTypeFromType(typeof(PythonType));
         private static readonly WeakReference[] _emptyWeakRef = new WeakReference[0];
-        private static object _subtypesLock = new object();
-        internal static Func<string, Exception> DefaultMakeException = (message) => new Exception(message);
+        private static readonly object _subtypesLock = new object();
+        internal static readonly Func<string, Exception> DefaultMakeException = (message) => new Exception(message);
 
         /// <summary>
         /// Provides delegates that will invoke a parameterless type ctor.  The first key provides
         /// the dictionary for a specific type, the 2nd key provides the delegate for a specific
         /// call site type used in conjunction w/ our IFastInvokable implementation.
         /// </summary>
-        private static Dictionary<Type, Dictionary<Type, Delegate>> _fastBindCtors = new Dictionary<Type, Dictionary<Type, Delegate>>();
+        private static readonly Dictionary<Type, Dictionary<Type, Delegate>> _fastBindCtors = new Dictionary<Type, Dictionary<Type, Delegate>>();
 
         /// <summary>
         /// Shared built-in functions for creating instances of user defined types.  Because all
         /// types w/ the same UnderlyingSystemType share the same constructors these can be
         /// shared across multiple types.
         /// </summary>
-        private static Dictionary<Type, BuiltinFunction> _userTypeCtors = new Dictionary<Type, BuiltinFunction>();
+        private static readonly Dictionary<Type, BuiltinFunction> _userTypeCtors = new Dictionary<Type, BuiltinFunction>();
 
 
         /// <summary>

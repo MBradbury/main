@@ -34,7 +34,7 @@ namespace IronPython.Runtime {
             internal String cAlternateFileName;
         }
 
-        public static IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
+        public static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
         [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Auto, BestFitMapping = false)]
         internal static extern IntPtr FindFirstFile(String fileName, out WIN32_FIND_DATA data);

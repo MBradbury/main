@@ -71,9 +71,9 @@ namespace IronPython.Compiler.Ast {
             return Ast.Block(statements.ToReadOnlyCollection());
         }
 
-        internal class DebugInfoRemovalExpression : MSAst.Expression {
-            private MSAst.Expression _inner;
-            private int _start;
+        internal sealed class DebugInfoRemovalExpression : MSAst.Expression {
+            private readonly MSAst.Expression _inner;
+            private readonly int _start;
 
             public DebugInfoRemovalExpression(MSAst.Expression expression, int line) {
                 _inner = expression;

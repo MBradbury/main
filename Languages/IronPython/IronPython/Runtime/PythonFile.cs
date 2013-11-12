@@ -853,8 +853,8 @@ namespace IronPython.Runtime {
     #region File Manager
 
     internal class PythonFileManager {
-        private HybridMapping<PythonFile> fileMapping = new HybridMapping<PythonFile>(3);
-        private HybridMapping<object> objMapping = new HybridMapping<object>(3);
+        private readonly HybridMapping<PythonFile> fileMapping = new HybridMapping<PythonFile>(3);
+        private readonly HybridMapping<object> objMapping = new HybridMapping<object>(3);
 
         public int AddToStrongMapping(PythonFile pf) {
             return fileMapping.StrongAdd(pf);

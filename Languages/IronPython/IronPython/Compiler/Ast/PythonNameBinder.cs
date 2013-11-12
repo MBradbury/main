@@ -56,8 +56,8 @@ using IronPython.Runtime.Operations;
 namespace IronPython.Compiler.Ast {
     using Ast = MSAst.Expression;
 
-    class DefineBinder : PythonWalkerNonRecursive {
-        private PythonNameBinder _binder;
+    sealed class DefineBinder : PythonWalkerNonRecursive {
+        private readonly PythonNameBinder _binder;
         public DefineBinder(PythonNameBinder binder) {
             _binder = binder;
         }
@@ -76,8 +76,8 @@ namespace IronPython.Compiler.Ast {
         }
     }
 
-    class ParameterBinder : PythonWalkerNonRecursive {
-        private PythonNameBinder _binder;
+    sealed class ParameterBinder : PythonWalkerNonRecursive {
+        private readonly PythonNameBinder _binder;
         public ParameterBinder(PythonNameBinder binder) {
             _binder = binder;
         }
@@ -114,8 +114,8 @@ namespace IronPython.Compiler.Ast {
         }
     }
 
-    class DeleteBinder : PythonWalkerNonRecursive {
-        private PythonNameBinder _binder;
+    sealed class DeleteBinder : PythonWalkerNonRecursive {
+        private readonly PythonNameBinder _binder;
         public DeleteBinder(PythonNameBinder binder) {
             _binder = binder;
         }
@@ -125,12 +125,12 @@ namespace IronPython.Compiler.Ast {
         }
     }
 
-    class PythonNameBinder : PythonWalker {
+    sealed class PythonNameBinder : PythonWalker {
         private PythonAst _globalScope;
         internal ScopeStatement _currentScope;
-        private List<ScopeStatement> _scopes = new List<ScopeStatement>();
-        private List<ILoopStatement> _loops = new List<ILoopStatement>();
-        private List<int> _finallyCount = new List<int>();
+        private readonly List<ScopeStatement> _scopes = new List<ScopeStatement>();
+        private readonly List<ILoopStatement> _loops = new List<ILoopStatement>();
+        private readonly List<int> _finallyCount = new List<int>();
 
         #region Recursive binders
 
@@ -698,7 +698,7 @@ namespace IronPython.Compiler.Ast {
                 variable.Kind = VariableKind.Global;
 
                 if (conflict == null) {
-                    // no previously definied variables, add it to the current scope
+                    // no previously defined variables, add it to the current scope
                     _currentScope.AddGlobalVariable(variable);
                 }
             }

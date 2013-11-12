@@ -29,7 +29,7 @@ namespace IronPython.Runtime {
     /// 
     /// Full locking is defined as being on the DictionaryStorage object it's self,
     /// not an internal member.  This enables subclasses to provide their own locking
-    /// aruond large operations and call lock free functions.
+    /// around large operations and call lock free functions.
     /// </summary>
     [Serializable]
     internal abstract class DictionaryStorage  {
@@ -134,5 +134,4 @@ namespace IronPython.Runtime {
             return TryGetValue("__import__", out value);
         }
     }
-
 }

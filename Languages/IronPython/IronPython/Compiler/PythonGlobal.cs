@@ -42,8 +42,8 @@ namespace IronPython.Compiler {
         private string _name;
         private CodeContext/*!*/ _context;
 
-        internal static PropertyInfo/*!*/ CurrentValueProperty = typeof(PythonGlobal).GetProperty("CurrentValue");
-        internal static PropertyInfo/*!*/ RawValueProperty = typeof(PythonGlobal).GetProperty("RawValue");
+        internal static readonly PropertyInfo/*!*/ CurrentValueProperty = typeof(PythonGlobal).GetProperty("CurrentValue");
+        internal static readonly PropertyInfo/*!*/ RawValueProperty = typeof(PythonGlobal).GetProperty("RawValue");
 
         public PythonGlobal(CodeContext/*!*/ context, string name) {
             Assert.NotNull(context);
@@ -134,7 +134,5 @@ namespace IronPython.Compiler {
                 _value,
                 RawValue == Uninitialized.Instance ? "Module Local" : "Global");
         }
-
-
     }
 }
