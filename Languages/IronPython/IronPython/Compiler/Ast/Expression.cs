@@ -29,8 +29,6 @@ using IronPython.Runtime.Binding;
 
 namespace IronPython.Compiler.Ast {
     public abstract class Expression : Node {
-        internal static Expression[] EmptyArray = new Expression[0];
-
         internal virtual MSAst.Expression TransformSet(SourceSpan span, MSAst.Expression right, PythonOperationKind op) {
             // unreachable, CheckAssign prevents us from calling this at parse time.
             Debug.Assert(false);
