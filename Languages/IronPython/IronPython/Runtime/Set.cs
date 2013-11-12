@@ -36,6 +36,9 @@ namespace IronPython.Runtime {
 #if CLR2
         , IValueEquality
 #endif
+#if FEATURE_READONLY_COLLECTION_INTERFACE
+        , IReadOnlyCollection<object>
+#endif
  {
         internal SetStorage _items;
 
@@ -906,6 +909,9 @@ namespace IronPython.Runtime {
     public class FrozenSetCollection : IEnumerable, IEnumerable<object>, ICollection, IStructuralEquatable, ICodeFormattable
 #if CLR2
         , IValueEquality
+#endif
+#if FEATURE_READONLY_COLLECTION_INTERFACE
+        , IReadOnlyCollection<object>
 #endif
     {
         internal SetStorage _items;

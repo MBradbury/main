@@ -33,6 +33,9 @@ namespace IronPython.Runtime {
 #if CLR2
         IValueEquality,
 #endif
+#if FEATURE_READONLY_COLLECTION_INTERFACE
+        IReadOnlyDictionary<object, object> ,
+#endif
         ICodeFormattable, IStructuralEquatable {
         internal DictionaryStorage _storage;
 
@@ -108,6 +111,23 @@ namespace IronPython.Runtime {
         public void __init__() {
         }
 
+        #endregion
+
+
+        #region IReadOnlyDictionary<object,object> Members
+#if FEATURE_READONLY_COLLECTION_INTERFACE
+        IEnumerable<object> IReadOnlyDictionary<object, object>.Keys
+        {
+            [PythonHidden]
+            get { return keys(); }
+        }
+
+        IEnumerable<object> IReadOnlyDictionary<object, object>.Values
+        {
+            [PythonHidden]
+            get { return values(); }
+        }
+#endif
         #endregion
 
         #region IDictionary<object,object> Members
